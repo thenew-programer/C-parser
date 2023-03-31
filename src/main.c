@@ -12,14 +12,15 @@ int main(void)
         int parserNumber;
 
         /* Get the the syntax you want to parse*/
+        printf("Enter a number: ");
         fgets(line, BUFFER, stdin);
 
         /* get the number from the parse function */
 
         /* Call parser and give him the address of the line*/
-        if (parser(line, &number))
+        if (parser(line, &parserNumber))
         {
-                printf("Number = %d\n", number);
+                printf("Number = %d\n", parserNumber);
         }
         else
         {

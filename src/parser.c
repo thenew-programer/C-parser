@@ -7,15 +7,17 @@
  * Return: valid | not valid
  */
 
-bool parser(char *line, int *number)
+bool parser(char *line, int *parserNumber)
 {
         /* Declare the variable that I'm gonna need */
         int lineIndex = 0;
         char nextChar;
         int sign = +1;
         int state;
+        int number;
         bool valid;
         valid = true;
+        number = 0;
         state = S_I;
 
         do {
@@ -37,7 +39,7 @@ bool parser(char *line, int *number)
                                 else if (isDigit(nextChar))
                                 {
                                         sign = +1;
-                                        *number = nextChar - '0';
+                                        number = nextChar - '0';
                                         state = S_M;
                                 }
                                 else
@@ -49,7 +51,7 @@ bool parser(char *line, int *number)
                         case S_F:
                                 if (isDigit(nextChar))
                                 {
-                                        *number = (10 * (*number)) + (nextChar - '0');
+                                        number = (10 * number) + (nextChar - '0');
                                         state = S_M;
                                 }
                                 else
@@ -62,12 +64,12 @@ bool parser(char *line, int *number)
                         case S_M:
                                 if (isDigit(nextChar))
                                 {
-                                        *number = (10 * (*number)) + (nextChar - '0');
+                                        number = (10 * number) + (nextChar - '0');
                                         state = S_M;
                                 }
                                 else if (nextChar == '\n')
                                 {
-                                        *number *= sign;
+                                        number *= sign;
                                         state = S_STOP;
                                 }
                                 else
@@ -80,6 +82,7 @@ bool parser(char *line, int *number)
         } while ((state != S_STOP) && (valid));
 
 
+        *parserNumber = number;
         return (valid);
 }
 

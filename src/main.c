@@ -9,7 +9,7 @@ int main(void)
 {
         /* Declaring the variables that we will need*/
         char line[BUFFER];
-        int number;
+        int parserNumber;
 
         /* Get the the syntax you want to parse*/
         fgets(line, BUFFER, stdin);
@@ -17,7 +17,6 @@ int main(void)
         /* get the number from the parse function */
 
         /* Call parser and give him the address of the line*/
-        number = 0;
         if (parser(line, &number))
         {
                 printf("Number = %d\n", number);

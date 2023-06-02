@@ -8,7 +8,7 @@ CC = gcc
 
 LDFLAGS = 
 
-CFLAGS = -Wall -Werror -Wextra -pedantec -c
+CFLAGS = -Wall -Werror -Wextra -pedantec -c -I./src/include
 
 SOURCE = $(wildcard src/*.c)
 

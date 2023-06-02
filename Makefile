@@ -6,9 +6,9 @@
 
 CC = gcc
 
-LDFLAGS = -lm
+LDFLAGS = 
 
-CFLAGS = -Wall -c 
+CFLAGS = -Wall -Werror -Wextra -pedantec -c
 
 SOURCE = $(wildcard src/*.c)
 
@@ -23,11 +23,11 @@ all: $(BINARY)
 
 $(BINARY): $(OBJECT)
 	@echo "Checking..."
-	$(CC)  $< -o $(BINARY)
+	$(CC)  $<
 
 %.o: %.c
 	@echo "Creating object..."
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -o $@
 	
 clean:
 	@echo "Cleaning up..."
